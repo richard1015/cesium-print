@@ -1,0 +1,24 @@
+{
+  "name": "cesium-print",
+  "version": "1.0.0",
+  "description": "cesium print plugin",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/richard1015/cesium-print.git"
+  },
+  "keywords": [
+    "cesium-print",
+    "cesium",
+    "plugin"
+  ],
+  "author": "richard1015",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/richard1015/cesium-print/issues"
+  },
+  "homepage": "https://github.com/richard1015/cesium-print#readme"
+}
