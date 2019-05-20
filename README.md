@@ -146,5 +146,8 @@ Currently this plugin supports the following options:
 ## Demo
 [cesium pulgin /demo](https://richard1015.github.io/cesium/)
 
+## Other Cesium Pulgin 
+[cesium-navigation-es6 /github](https://github.com/richard1015/cesium-navigation-es6)
+
 ---------------------------------------
 Like our [work](https://github.com/richard1015)? [Get in touch 51844712@qq.com!](mailto:51844712@qq.com)
