@@ -2,6 +2,9 @@
 # cesium-print Plugin
 Cesium 动态打印插件
 cesium-print is a plugin for cesium printing 
+/static/image/print.gif
+
+![演示](https://github.com/richard1015/richard1015.github.io/blob/master/static/image/print.gif "演示.gif")
 
 ## Usage
 
