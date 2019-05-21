@@ -11,17 +11,17 @@
         // Replacement jQuery clone that also clones the values in selects and textareas as jQuery doesn't for performance reasons - https://stackoverflow.com/questions/742810/clone-isnt-cloning-select-values
         // Based on https://github.com/spencertipping/jquery.fix.clone
         var $elmToClone = $(elmToClone),
-            $result           = $elmToClone.clone(withDataAndEvents, deepWithDataAndEvents),
-            $myTextareas     = $elmToClone.find('textarea').add($elmToClone.filter('textarea')),
+            $result = $elmToClone.clone(withDataAndEvents, deepWithDataAndEvents),
+            $myTextareas = $elmToClone.find('textarea').add($elmToClone.filter('textarea')),
             $resultTextareas = $result.find('textarea').add($result.filter('textarea')),
-            $mySelects       = $elmToClone.find('select').add($elmToClone.filter('select')),
-            $resultSelects   = $result.find('select').add($result.filter('select')),
+            $mySelects = $elmToClone.find('select').add($elmToClone.filter('select')),
+            $resultSelects = $result.find('select').add($result.filter('select')),
             i, l, j, m;
 
         for (i = 0, l = $myTextareas.length; i < l; ++i) {
             $($resultTextareas[i]).val($($myTextareas[i]).val());
         }
-        for (i = 0, l = $mySelects.length;   i < l; ++i) {
+        for (i = 0, l = $mySelects.length; i < l; ++i) {
             for (j = 0, m = $mySelects[i].options.length; j < m; ++j) {
                 if ($mySelects[i].options[j].selected === true) {
                     $resultSelects[i].options[j].selected = true;
@@ -49,14 +49,18 @@
         try {
             frameWindow = frameWindow.contentWindow || frameWindow.contentDocument || frameWindow;
             var wdoc = frameWindow.document || frameWindow.contentDocument || frameWindow;
-            if(options.doctype) {
+
+            if (options.doctype) {
                 wdoc.write(options.doctype);
             }
             wdoc.write(content);
+            //按照指定宽高
+            wdoc.childNodes[1].childNodes[1].style = "width: " + options.width + "px;height: " + options.height + "px;";
+
             wdoc.close();
             var printed = false,
                 callPrint = function () {
-                    if(printed) {
+                    if (printed) {
                         return;
                     }
                     // Fix for IE : Allow it to render the iframe
@@ -219,9 +223,9 @@
             var title = $("title", copy);
             if (title.length === 0) {
                 title = $("<title />");
-                copy.append(title);                
+                copy.append(title);
             }
-            title.text(options.title);            
+            title.text(options.title);
         }
         // Appedned content
         copy.append(getjQueryObject(options.append));

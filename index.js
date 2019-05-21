@@ -2,7 +2,7 @@
  * @Description: Custom Printing 自定义打印工具类
  * @Author: richard1015
  * @Date: 2019-01-02 10:03:25
- * @LastEditTime: 2019-05-20 17:10:56
+ * @LastEditTime: 2019-05-21 13:47:00
  * @LastEditors: Please set LastEditors
  */
 /* eslint-disable */
@@ -251,11 +251,13 @@ export default {
         // var a1 = { width: "3034", height: "2101" };
         //a4横向打印尺寸
         var a4 = { width: "978", height: "650" };
-
+        if (typeof options.downLoadEnable !== 'boolean') {
+            options.downLoadEnable = true;
+        }
         var pageWidth = options.width || a4.width,
             pageHeight = options.height || a4.height,
             title = options.title || 'printTitle',
-            downLoadEnable = options.downLoadEnable || true,
+            downLoadEnable = options.downLoadEnable,
             fontSize = options.fontSize || '28';
         div.style = `width: ${pageWidth}px;
                      height: ${pageHeight}px;
@@ -270,15 +272,17 @@ export default {
         div.insertBefore(h1, div.firstChild);
 
         if (downLoadEnable) {
-            this.downLoadFile(div, title);
+            this.downLoadFile(div, title, pageWidth, pageHeight);
         } else {
             // 打印文档
             $(div).print({
                 globalStyles: false,
+                width: pageWidth,
+                height: pageHeight,
             });
         }
     },
-    downLoadFile(obj, filename) {
+    downLoadFile(obj, filename, pageWidth, pageHeight) {
         var that = this;
         return new Promise((resolve, reject) => {
             document.body.appendChild(obj);
@@ -289,8 +293,11 @@ export default {
                 //打印下载后的图片
                 var printImgObj = new Image()
                 printImgObj.src = base64Img;
+                printImgObj.style = `width: ${pageWidth}px;height: ${pageHeight}px;`
                 printImgObj.onload = function () {
                     $(this).print({
+                        width: pageWidth,
+                        height: pageHeight,
                         globalStyles: false,
                     });
                 }

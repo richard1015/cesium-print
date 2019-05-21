@@ -145,6 +145,8 @@ Currently this plugin supports the following options:
 
 ## Demo
 [cesium pulgin /demo](https://richard1015.github.io/cesium/)
+# Code Demo
+[https://github.com/richard1015/cesium-vue-example /(cesium-print,cesium-navigation-es6)](https://github.com/richard1015/cesium-vue-example/blob/master/src/components/CesiumViewer.vue)
 
 ## Other Cesium Pulgin 
 [cesium-navigation-es6 /github](https://github.com/richard1015/cesium-navigation-es6)
