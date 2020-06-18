@@ -73,9 +73,9 @@ export default {
 
                 //鼠标点击按下事件，画图准备
                 canvas.onmousedown = function (e) {
-
-                    that.start_x = e.clientX + that.defaultStrokeWidth
-                    that.start_y = e.clientY + that.defaultStrokeWidth
+                    //添加屏幕缩放比例window.devicePixelRatio
+                    that.start_x = e.clientX*window.devicePixelRatio + that.defaultStrokeWidth
+                    that.start_y = e.clientY*window.devicePixelRatio + that.defaultStrokeWidth
                     //设置画笔颜色和宽度
                     var color = that.penColor;
                     var penWidth = that.penWidth;
@@ -97,8 +97,8 @@ export default {
                     $(canvas).saveCanvas();
                     //鼠标移动事件，画图
                     canvas.onmousemove = function (e) {
-                        that.area_width = e.clientX - that.start_x - that.defaultStrokeWidth
-                        that.area_height = e.clientY - that.start_y - that.defaultStrokeWidth
+                        that.area_width = e.clientX*window.devicePixelRatio - that.start_x - that.defaultStrokeWidth
+                        that.area_height = e.clientY*window.devicePixelRatio - that.start_y - that.defaultStrokeWidth
                         var width = e.clientX - canvasLeft - x;
                         var height = e.clientY - canvasTop - y;
                         $(canvas).removeLayer('areaLayer');
@@ -124,9 +124,9 @@ export default {
                     var penWidth = that.penWidth;
 
                     canvas.onmousemove = null;
-
-                    var width = e.clientX - canvasLeft - x;
-                    var height = e.clientY - canvasTop - y;
+                    //添加屏幕缩放比例window.devicePixelRatio
+                    var width = e.clientX*window.devicePixelRatio - canvasLeft - x;
+                    var height = e.clientY*window.devicePixelRatio - canvasTop - y;
 
                     $(canvas).removeLayer('areaLayer');
 
