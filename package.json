@@ -1,6 +1,6 @@
 {
   "name": "cesium-print",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "cesium print plugin",
   "main": "index.js",
   "scripts": {
