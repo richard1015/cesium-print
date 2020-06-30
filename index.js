@@ -28,6 +28,8 @@ export default {
     defaultPenColor: "red",
     //进行打印的canvas dom
     printCanvasDom: {},
+    //是否打印指北针
+    defaultAddCompass:true,
     //绘制打印区域
     drawArea: function (documentId, options) {
         if (typeof documentId === "string") {
@@ -200,9 +202,13 @@ export default {
         //添加实际打印图
         div.appendChild(clipImg);
         //获取 cesium-navigation 插件，目的将指北针拼接打印
-        var navigationDom = document.getElementsByClassName('compass');
         //此处获取 指北针dom元素进行 拼接打印
-        if (navigationDom.length) {
+        let isAddCompass =
+        options.isAddCompass === undefined || options.isAddCompass === null
+          ? that.defaultAddCompass
+          : options.isAddCompass;
+  
+      if (navigationDom.length && isAddCompass) {
             html2canvas(navigationDom[0], {
                 scale: 1,
                 allowTaint: false,
